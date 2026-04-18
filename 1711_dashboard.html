@@ -49,6 +49,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 .section-title.orange{border-left-color:#d85a30}
 
 /* ── grids ── */
+.grid1{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
 
@@ -150,21 +151,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 </div>
 
 <!-- ── 三層週買賣超 ── -->
-<div class="grid3">
+<div class="grid1">
   <div class="card">
     <p class="card-title">1000張以上 週買賣超</p>
     <p class="card-sub">週持股比例變化（%）</p>
     <div style="position:relative;height:170px"><canvas id="c3"></canvas></div>
-  </div>
-  <div class="card">
-    <p class="card-title"> 週買賣超</p>
-    <p class="card-sub">週持股比例變化（%）</p>
-    <div style="position:relative;height:170px"><canvas id="c4"></canvas></div>
-  </div>
-  <div class="card">
-    <p class="card-title"> 週買賣超</p>
-    <p class="card-sub">週持股比例變化（%）</p>
-    <div style="position:relative;height:170px"><canvas id="c5"></canvas></div>
   </div>
 </div>
 
