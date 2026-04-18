@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>集保週排行榜 2026-04-18</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f5f7;color:#1d1d1f;padding:1.5rem}
+.hdr{padding:1.25rem 0 1rem;border-bottom:1px solid #d2d2d7;margin-bottom:1.25rem}
+.hdr-title{font-size:20px;font-weight:500;margin:0 0 4px}
+.hdr-sub{font-size:13px;color:#6e6e73;margin:0}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:1.25rem}
+.mc{background:#fff;border-radius:10px;padding:.875rem 1rem;border:1px solid #e5e5ea}
+.mc-label{font-size:11px;color:#6e6e73;margin:0 0 4px}
+.mc-val{font-size:24px;font-weight:500;margin:0}
+.mc-sub{font-size:11px;color:#6e6e73;margin:2px 0 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin-bottom:1.25rem}
+.card{background:#fff;border:1px solid #e5e5ea;border-radius:12px;padding:1.125rem}
+.card-title{font-size:13px;font-weight:500;margin:0 0 2px}
+.card-sub{font-size:11px;color:#6e6e73;margin:0 0 .875rem}
+.tbl-wrap{overflow-x:auto;margin-top:.75rem}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#f5f5f7;padding:6px 8px;text-align:left;font-weight:500;color:#6e6e73;border-bottom:1px solid #e5e5ea}
+td{padding:5px 8px;border-bottom:1px solid #f0f0f0}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#fafafa}
+td.rank{color:#6e6e73;width:36px}
+td.sid{font-weight:500;font-family:monospace}
+td.pct{color:#6e6e73}
+td.chg{font-weight:500;font-family:monospace}
+.up{color:#1d9e75}
+.dn{color:#e24b4a}
+@media(max-width:768px){
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .grid2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <p class="hdr-title">集保週排行榜 — 2026-04-18</p>
+  <p class="hdr-sub">大戶持股比例週增減（分級11–15合計）｜上週 2026-04-17｜僅含正股（首位1–9之4位代號）</p>
+</div>
+
+<div class="metrics">
+  <div class="mc">
+    <p class="mc-label">正股總數</p>
+    <p class="mc-val">2833</p>
+    <p class="mc-sub">已排除ETF與特殊代號</p>
+  </div>
+  <div class="mc">
+    <p class="mc-label">大戶增加</p>
+    <p class="mc-val" style="color:#1d9e75">1195</p>
+    <p class="mc-sub">42.2% 比例</p>
+  </div>
+  <div class="mc">
+    <p class="mc-label">大戶減少</p>
+    <p class="mc-val" style="color:#e24b4a">953</p>
+    <p class="mc-sub">33.6% 比例</p>
+  </div>
+  <div class="mc">
+    <p class="mc-label">持平 / 無變化</p>
+    <p class="mc-val" style="color:#6e6e73">685</p>
+    <p class="mc-sub">24.2% 比例</p>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <p class="card-title">大戶持股增加最多 TOP 30</p>
+    <p class="card-sub">週持股比例變化（百分點）</p>
+    <div style="position:relative;height:660px"><canvas id="cBuy"></canvas></div>
+  </div>
+  <div class="card">
+    <p class="card-title">大戶持股減少最多 TOP 30</p>
+    <p class="card-sub">週持股比例變化（百分點）</p>
+    <div style="position:relative;height:660px"><canvas id="cSell"></canvas></div>
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <p class="card-title">增加前 50 名完整表</p>
+    <p class="card-sub">股號 / 大戶佔比 / 週增減</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>股號</th><th>大戶佔比</th><th>週增減</th></tr></thead>
+        <tbody>
+<tr><td class="rank">1</td><td class="sid">3086<span style="color:#6e6e73;margin-left:4px;font-size:11px">華義*</span></td><td class="pct">100.00%</td><td class="chg" style="color:#1d9e75">+17.93%</td></tr>
+<tr><td class="rank">2</td><td class="sid">6530<span style="color:#6e6e73;margin-left:4px;font-size:11px">創威</span></td><td class="pct">38.79%</td><td class="chg" style="color:#1d9e75">+12.08%</td></tr>
+<tr><td class="rank">3</td><td class="sid">6109<span style="color:#6e6e73;margin-left:4px;font-size:11px">亞元</span></td><td class="pct">61.79%</td><td class="chg" style="color:#1d9e75">+10.84%</td></tr>
+<tr><td class="rank">4</td><td class="sid">5498<span style="color:#6e6e73;margin-left:4px;font-size:11px">凱崴</span></td><td class="pct">46.50%</td><td class="chg" style="color:#1d9e75">+10.72%</td></tr>
+<tr><td class="rank">5</td><td class="sid">6173<span style="color:#6e6e73;margin-left:4px;font-size:11px">信昌電</span></td><td class="pct">64.57%</td><td class="chg" style="color:#1d9e75">+10.35%</td></tr>
+<tr><td class="rank">6</td><td class="sid">2484<span style="color:#6e6e73;margin-left:4px;font-size:11px">希華</span></td><td class="pct">36.39%</td><td class="chg" style="color:#1d9e75">+10.24%</td></tr>
+<tr><td class="rank">7</td><td class="sid">4989<span style="color:#6e6e73;margin-left:4px;font-size:11px">榮科</span></td><td class="pct">51.38%</td><td class="chg" style="color:#1d9e75">+9.56%</td></tr>
+<tr><td class="rank">8</td><td class="sid">3221<span style="color:#6e6e73;margin-left:4px;font-size:11px">台嘉碩</span></td><td class="pct">43.57%</td><td class="chg" style="color:#1d9e75">+8.56%</td></tr>
+<tr><td class="rank">9</td><td class="sid">8358<span style="color:#6e6e73;margin-left:4px;font-size:11px">金居</span></td><td class="pct">62.54%</td><td class="chg" style="color:#1d9e75">+8.48%</td></tr>
+<tr><td class="rank">10</td><td class="sid">3057<span style="color:#6e6e73;margin-left:4px;font-size:11px">喬鼎</span></td><td class="pct">36.39%</td><td class="chg" style="color:#1d9e75">+7.72%</td></tr>
+<tr><td class="rank">11</td><td class="sid">6278<span style="color:#6e6e73;margin-left:4px;font-size:11px">台表科</span></td><td class="pct">76.95%</td><td class="chg" style="color:#1d9e75">+6.82%</td></tr>
+<tr><td class="rank">12</td><td class="sid">8150<span style="color:#6e6e73;margin-left:4px;font-size:11px">南茂</span></td><td class="pct">76.62%</td><td class="chg" style="color:#1d9e75">+6.45%</td></tr>
+<tr><td class="rank">13</td><td class="sid">8111<span style="color:#6e6e73;margin-left:4px;font-size:11px">立��</span></td><td class="pct">48.24%</td><td class="chg" style="color:#1d9e75">+6.43%</td></tr>
+<tr><td class="rank">14</td><td class="sid">5439<span style="color:#6e6e73;margin-left:4px;font-size:11px">高技</span></td><td class="pct">63.89%</td><td class="chg" style="color:#1d9e75">+6.00%</td></tr>
+<tr><td class="rank">15</td><td class="sid">3645<span style="color:#6e6e73;margin-left:4px;font-size:11px">達邁</span></td><td class="pct">59.71%</td><td class="chg" style="color:#1d9e75">+5.90%</td></tr>
+<tr><td class="rank">16</td><td class="sid">4977<span style="color:#6e6e73;margin-left:4px;font-size:11px">眾達-KY</span></td><td class="pct">32.26%</td><td class="chg" style="color:#1d9e75">+5.86%</td></tr>
+<tr><td class="rank">17</td><td class="sid">4979<span style="color:#6e6e73;margin-left:4px;font-size:11px">華星光</span></td><td class="pct">54.72%</td><td class="chg" style="color:#1d9e75">+5.78%</td></tr>
+<tr><td class="rank">18</td><td class="sid">3450<span style="color:#6e6e73;margin-left:4px;font-size:11px">聯鈞</span></td><td class="pct">47.40%</td><td class="chg" style="color:#1d9e75">+5.69%</td></tr>
+<tr><td class="rank">19</td><td class="sid">3042<span style="color:#6e6e73;margin-left:4px;font-size:11px">晶技</span></td><td class="pct">71.42%</td><td class="chg" style="color:#1d9e75">+5.31%</td></tr>
+<tr><td class="rank">20</td><td class="sid">3581<span style="color:#6e6e73;margin-left:4px;font-size:11px">博磊</span></td><td class="pct">70.60%</td><td class="chg" style="color:#1d9e75">+5.25%</td></tr>
+<tr><td class="rank">21</td><td class="sid">8043<span style="color:#6e6e73;margin-left:4px;font-size:11px">蜜望實</span></td><td class="pct">64.89%</td><td class="chg" style="color:#1d9e75">+5.10%</td></tr>
+<tr><td class="rank">22</td><td class="sid">8289<span style="color:#6e6e73;margin-left:4px;font-size:11px">泰藝</span></td><td class="pct">56.29%</td><td class="chg" style="color:#1d9e75">+4.97%</td></tr>
+<tr><td class="rank">23</td><td class="sid">6443<span style="color:#6e6e73;margin-left:4px;font-size:11px">元晶</span></td><td class="pct">19.64%</td><td class="chg" style="color:#1d9e75">+4.87%</td></tr>
+<tr><td class="rank">24</td><td class="sid">6127<span style="color:#6e6e73;margin-left:4px;font-size:11px">九豪</span></td><td class="pct">35.69%</td><td class="chg" style="color:#1d9e75">+4.67%</td></tr>
+<tr><td class="rank">25</td><td class="sid">4916<span style="color:#6e6e73;margin-left:4px;font-size:11px">事欣科</span></td><td class="pct">36.11%</td><td class="chg" style="color:#1d9e75">+4.36%</td></tr>
+<tr><td class="rank">26</td><td class="sid">3289<span style="color:#6e6e73;margin-left:4px;font-size:11px">宜特</span></td><td class="pct">45.54%</td><td class="chg" style="color:#1d9e75">+4.17%</td></tr>
+<tr><td class="rank">27</td><td class="sid">1597<span style="color:#6e6e73;margin-left:4px;font-size:11px">直得</span></td><td class="pct">66.49%</td><td class="chg" style="color:#1d9e75">+4.09%</td></tr>
+<tr><td class="rank">28</td><td class="sid">2481<span style="color:#6e6e73;margin-left:4px;font-size:11px">強茂</span></td><td class="pct">67.83%</td><td class="chg" style="color:#1d9e75">+3.92%</td></tr>
+<tr><td class="rank">29</td><td class="sid">4540<span style="color:#6e6e73;margin-left:4px;font-size:11px">全球傳動</span></td><td class="pct">46.39%</td><td class="chg" style="color:#1d9e75">+3.83%</td></tr>
+<tr><td class="rank">30</td><td class="sid">4908<span style="color:#6e6e73;margin-left:4px;font-size:11px">前鼎</span></td><td class="pct">62.24%</td><td class="chg" style="color:#1d9e75">+3.62%</td></tr>
+<tr><td class="rank">31</td><td class="sid">4764<span style="color:#6e6e73;margin-left:4px;font-size:11px">雙鍵</span></td><td class="pct">84.34%</td><td class="chg" style="color:#1d9e75">+3.55%</td></tr>
+<tr><td class="rank">32</td><td class="sid">2327<span style="color:#6e6e73;margin-left:4px;font-size:11px">國巨*</span></td><td class="pct">75.30%</td><td class="chg" style="color:#1d9e75">+3.53%</td></tr>
+<tr><td class="rank">33</td><td class="sid">6419<span style="color:#6e6e73;margin-left:4px;font-size:11px">京晨科</span></td><td class="pct">41.79%</td><td class="chg" style="color:#1d9e75">+3.51%</td></tr>
+<tr><td class="rank">34</td><td class="sid">6706<span style="color:#6e6e73;margin-left:4px;font-size:11px">惠特</span></td><td class="pct">41.21%</td><td class="chg" style="color:#1d9e75">+3.43%</td></tr>
+<tr><td class="rank">35</td><td class="sid">4919<span style="color:#6e6e73;margin-left:4px;font-size:11px">新唐</span></td><td class="pct">68.79%</td><td class="chg" style="color:#1d9e75">+3.42%</td></tr>
+<tr><td class="rank">36</td><td class="sid">6456<span style="color:#6e6e73;margin-left:4px;font-size:11px">GIS-KY</span></td><td class="pct">58.98%</td><td class="chg" style="color:#1d9e75">+3.36%</td></tr>
+<tr><td class="rank">37</td><td class="sid">2478<span style="color:#6e6e73;margin-left:4px;font-size:11px">大毅</span></td><td class="pct">63.12%</td><td class="chg" style="color:#1d9e75">+3.34%</td></tr>
+<tr><td class="rank">38</td><td class="sid">5284<span style="color:#6e6e73;margin-left:4px;font-size:11px">jpp-KY</span></td><td class="pct">63.70%</td><td class="chg" style="color:#1d9e75">+3.33%</td></tr>
+<tr><td class="rank">39</td><td class="sid">3542</td><td class="pct">58.80%</td><td class="chg" style="color:#1d9e75">+3.29%</td></tr>
+<tr><td class="rank">40</td><td class="sid">6222<span style="color:#6e6e73;margin-left:4px;font-size:11px">立軒</span></td><td class="pct">90.73%</td><td class="chg" style="color:#1d9e75">+3.28%</td></tr>
+<tr><td class="rank">41</td><td class="sid">2740<span style="color:#6e6e73;margin-left:4px;font-size:11px">華軒</span></td><td class="pct">81.44%</td><td class="chg" style="color:#1d9e75">+3.21%</td></tr>
+<tr><td class="rank">42</td><td class="sid">3661<span style="color:#6e6e73;margin-left:4px;font-size:11px">世芯-KY</span></td><td class="pct">46.46%</td><td class="chg" style="color:#1d9e75">+3.16%</td></tr>
+<tr><td class="rank">43</td><td class="sid">3026<span style="color:#6e6e73;margin-left:4px;font-size:11px">禾伸堂</span></td><td class="pct">59.22%</td><td class="chg" style="color:#1d9e75">+3.11%</td></tr>
+<tr><td class="rank">44</td><td class="sid">2492<span style="color:#6e6e73;margin-left:4px;font-size:11px">華新科</span></td><td class="pct">61.55%</td><td class="chg" style="color:#1d9e75">+3.08%</td></tr>
+<tr><td class="rank">45</td><td class="sid">3664<span style="color:#6e6e73;margin-left:4px;font-size:11px">安瑞-KY</span></td><td class="pct">69.99%</td><td class="chg" style="color:#1d9e75">+3.03%</td></tr>
+<tr><td class="rank">46</td><td class="sid">6163<span style="color:#6e6e73;margin-left:4px;font-size:11px">華電網</span></td><td class="pct">58.58%</td><td class="chg" style="color:#1d9e75">+3.03%</td></tr>
+<tr><td class="rank">47</td><td class="sid">3587<span style="color:#6e6e73;margin-left:4px;font-size:11px">閎康</span></td><td class="pct">48.27%</td><td class="chg" style="color:#1d9e75">+2.98%</td></tr>
+<tr><td class="rank">48</td><td class="sid">8155<span style="color:#6e6e73;margin-left:4px;font-size:11px">博智</span></td><td class="pct">67.71%</td><td class="chg" style="color:#1d9e75">+2.98%</td></tr>
+<tr><td class="rank">49</td><td class="sid">3583<span style="color:#6e6e73;margin-left:4px;font-size:11px">辛耘</span></td><td class="pct">68.23%</td><td class="chg" style="color:#1d9e75">+2.94%</td></tr>
+<tr><td class="rank">50</td><td class="sid">2329<span style="color:#6e6e73;margin-left:4px;font-size:11px">華泰</span></td><td class="pct">58.34%</td><td class="chg" style="color:#1d9e75">+2.89%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <p class="card-title">減少前 50 名完整表</p>
+    <p class="card-sub">股號 / 大戶佔比 / 週增減</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>股號</th><th>大戶佔比</th><th>週增減</th></tr></thead>
+        <tbody>
+<tr><td class="rank">1</td><td class="sid">5381<span style="color:#6e6e73;margin-left:4px;font-size:11px">光譜</span></td><td class="pct">57.37%</td><td class="chg" style="color:#e24b4a">-42.63%</td></tr>
+<tr><td class="rank">2</td><td class="sid">8064<span style="color:#6e6e73;margin-left:4px;font-size:11px">東捷</span></td><td class="pct">48.79%</td><td class="chg" style="color:#e24b4a">-8.61%</td></tr>
+<tr><td class="rank">3</td><td class="sid">7761</td><td class="pct">74.63%</td><td class="chg" style="color:#e24b4a">-8.35%</td></tr>
+<tr><td class="rank">4</td><td class="sid">8937<span style="color:#6e6e73;margin-left:4px;font-size:11px">合騏*</span></td><td class="pct">92.89%</td><td class="chg" style="color:#e24b4a">-7.11%</td></tr>
+<tr><td class="rank">5</td><td class="sid">8028<span style="color:#6e6e73;margin-left:4px;font-size:11px">昇陽半導體</span></td><td class="pct">46.63%</td><td class="chg" style="color:#e24b4a">-6.80%</td></tr>
+<tr><td class="rank">6</td><td class="sid">6217<span style="color:#6e6e73;margin-left:4px;font-size:11px">中探針</span></td><td class="pct">42.44%</td><td class="chg" style="color:#e24b4a">-6.19%</td></tr>
+<tr><td class="rank">7</td><td class="sid">2489<span style="color:#6e6e73;margin-left:4px;font-size:11px">瑞軒</span></td><td class="pct">45.41%</td><td class="chg" style="color:#e24b4a">-6.15%</td></tr>
+<tr><td class="rank">8</td><td class="sid">2367<span style="color:#6e6e73;margin-left:4px;font-size:11px">燿華</span></td><td class="pct">31.89%</td><td class="chg" style="color:#e24b4a">-5.65%</td></tr>
+<tr><td class="rank">9</td><td class="sid">3535<span style="color:#6e6e73;margin-left:4px;font-size:11px">晶彩科</span></td><td class="pct">33.11%</td><td class="chg" style="color:#e24b4a">-5.44%</td></tr>
+<tr><td class="rank">10</td><td class="sid">5386<span style="color:#6e6e73;margin-left:4px;font-size:11px">青雲</span></td><td class="pct">46.41%</td><td class="chg" style="color:#e24b4a">-5.44%</td></tr>
+<tr><td class="rank">11</td><td class="sid">4720<span style="color:#6e6e73;margin-left:4px;font-size:11px">德淵</span></td><td class="pct">52.17%</td><td class="chg" style="color:#e24b4a">-5.32%</td></tr>
+<tr><td class="rank">12</td><td class="sid">8027<span style="color:#6e6e73;margin-left:4px;font-size:11px">鈦昇</span></td><td class="pct">47.22%</td><td class="chg" style="color:#e24b4a">-5.27%</td></tr>
+<tr><td class="rank">13</td><td class="sid">5271</td><td class="pct">46.46%</td><td class="chg" style="color:#e24b4a">-5.14%</td></tr>
+<tr><td class="rank">14</td><td class="sid">6672<span style="color:#6e6e73;margin-left:4px;font-size:11px">騰輝電子-KY</span></td><td class="pct">33.78%</td><td class="chg" style="color:#e24b4a">-5.12%</td></tr>
+<tr><td class="rank">15</td><td class="sid">6425<span style="color:#6e6e73;margin-left:4px;font-size:11px">易發</span></td><td class="pct">54.11%</td><td class="chg" style="color:#e24b4a">-4.84%</td></tr>
+<tr><td class="rank">16</td><td class="sid">3715<span style="color:#6e6e73;margin-left:4px;font-size:11px">定穎投控</span></td><td class="pct">43.31%</td><td class="chg" style="color:#e24b4a">-4.50%</td></tr>
+<tr><td class="rank">17</td><td class="sid">4906<span style="color:#6e6e73;margin-left:4px;font-size:11px">正文</span></td><td class="pct">32.22%</td><td class="chg" style="color:#e24b4a">-4.50%</td></tr>
+<tr><td class="rank">18</td><td class="sid">7771</td><td class="pct">86.34%</td><td class="chg" style="color:#e24b4a">-4.45%</td></tr>
+<tr><td class="rank">19</td><td class="sid">4542<span style="color:#6e6e73;margin-left:4px;font-size:11px">科嶠</span></td><td class="pct">61.54%</td><td class="chg" style="color:#e24b4a">-4.37%</td></tr>
+<tr><td class="rank">20</td><td class="sid">6407</td><td class="pct">54.86%</td><td class="chg" style="color:#e24b4a">-4.29%</td></tr>
+<tr><td class="rank">21</td><td class="sid">6673</td><td class="pct">41.80%</td><td class="chg" style="color:#e24b4a">-4.23%</td></tr>
+<tr><td class="rank">22</td><td class="sid">3376<span style="color:#6e6e73;margin-left:4px;font-size:11px">新日興</span></td><td class="pct">57.10%</td><td class="chg" style="color:#e24b4a">-4.10%</td></tr>
+<tr><td class="rank">23</td><td class="sid">4949<span style="color:#6e6e73;margin-left:4px;font-size:11px">有成精密</span></td><td class="pct">65.69%</td><td class="chg" style="color:#e24b4a">-4.01%</td></tr>
+<tr><td class="rank">24</td><td class="sid">6920</td><td class="pct">77.72%</td><td class="chg" style="color:#e24b4a">-3.95%</td></tr>
+<tr><td class="rank">25</td><td class="sid">7772</td><td class="pct">77.60%</td><td class="chg" style="color:#e24b4a">-3.86%</td></tr>
+<tr><td class="rank">26</td><td class="sid">2313<span style="color:#6e6e73;margin-left:4px;font-size:11px">華通</span></td><td class="pct">70.94%</td><td class="chg" style="color:#e24b4a">-3.79%</td></tr>
+<tr><td class="rank">27</td><td class="sid">5443<span style="color:#6e6e73;margin-left:4px;font-size:11px">均豪</span></td><td class="pct">43.73%</td><td class="chg" style="color:#e24b4a">-3.72%</td></tr>
+<tr><td class="rank">28</td><td class="sid">7907</td><td class="pct">96.34%</td><td class="chg" style="color:#e24b4a">-3.66%</td></tr>
+<tr><td class="rank">29</td><td class="sid">1711<span style="color:#6e6e73;margin-left:4px;font-size:11px">永光</span></td><td class="pct">51.61%</td><td class="chg" style="color:#e24b4a">-3.54%</td></tr>
+<tr><td class="rank">30</td><td class="sid">1815<span style="color:#6e6e73;margin-left:4px;font-size:11px">富喬</span></td><td class="pct">54.84%</td><td class="chg" style="color:#e24b4a">-3.36%</td></tr>
+<tr><td class="rank">31</td><td class="sid">5388<span style="color:#6e6e73;margin-left:4px;font-size:11px">中磊</span></td><td class="pct">60.17%</td><td class="chg" style="color:#e24b4a">-3.16%</td></tr>
+<tr><td class="rank">32</td><td class="sid">1717<span style="color:#6e6e73;margin-left:4px;font-size:11px">長興</span></td><td class="pct">71.21%</td><td class="chg" style="color:#e24b4a">-3.15%</td></tr>
+<tr><td class="rank">33</td><td class="sid">3498<span style="color:#6e6e73;margin-left:4px;font-size:11px">陽程</span></td><td class="pct">50.31%</td><td class="chg" style="color:#e24b4a">-3.15%</td></tr>
+<tr><td class="rank">34</td><td class="sid">8271<span style="color:#6e6e73;margin-left:4px;font-size:11px">宇瞻</span></td><td class="pct">55.98%</td><td class="chg" style="color:#e24b4a">-3.08%</td></tr>
+<tr><td class="rank">35</td><td class="sid">5297</td><td class="pct">39.19%</td><td class="chg" style="color:#e24b4a">-3.07%</td></tr>
+<tr><td class="rank">36</td><td class="sid">6568<span style="color:#6e6e73;margin-left:4px;font-size:11px">宏觀</span></td><td class="pct">49.38%</td><td class="chg" style="color:#e24b4a">-3.05%</td></tr>
+<tr><td class="rank">37</td><td class="sid">4967<span style="color:#6e6e73;margin-left:4px;font-size:11px">十銓</span></td><td class="pct">30.39%</td><td class="chg" style="color:#e24b4a">-3.03%</td></tr>
+<tr><td class="rank">38</td><td class="sid">6259<span style="color:#6e6e73;margin-left:4px;font-size:11px">百徽</span></td><td class="pct">54.96%</td><td class="chg" style="color:#e24b4a">-2.96%</td></tr>
+<tr><td class="rank">39</td><td class="sid">3031<span style="color:#6e6e73;margin-left:4px;font-size:11px">佰鴻</span></td><td class="pct">62.07%</td><td class="chg" style="color:#e24b4a">-2.93%</td></tr>
+<tr><td class="rank">40</td><td class="sid">3211<span style="color:#6e6e73;margin-left:4px;font-size:11px">順達</span></td><td class="pct">60.93%</td><td class="chg" style="color:#e24b4a">-2.91%</td></tr>
+<tr><td class="rank">41</td><td class="sid">5246</td><td class="pct">45.03%</td><td class="chg" style="color:#e24b4a">-2.77%</td></tr>
+<tr><td class="rank">42</td><td class="sid">3138<span style="color:#6e6e73;margin-left:4px;font-size:11px">耀登</span></td><td class="pct">32.62%</td><td class="chg" style="color:#e24b4a">-2.67%</td></tr>
+<tr><td class="rank">43</td><td class="sid">3260<span style="color:#6e6e73;margin-left:4px;font-size:11px">威剛</span></td><td class="pct">49.35%</td><td class="chg" style="color:#e24b4a">-2.59%</td></tr>
+<tr><td class="rank">44</td><td class="sid">7815</td><td class="pct">68.82%</td><td class="chg" style="color:#e24b4a">-2.59%</td></tr>
+<tr><td class="rank">45</td><td class="sid">1449<span style="color:#6e6e73;margin-left:4px;font-size:11px">佳和</span></td><td class="pct">46.78%</td><td class="chg" style="color:#e24b4a">-2.58%</td></tr>
+<tr><td class="rank">46</td><td class="sid">2337<span style="color:#6e6e73;margin-left:4px;font-size:11px">旺宏</span></td><td class="pct">56.22%</td><td class="chg" style="color:#e24b4a">-2.43%</td></tr>
+<tr><td class="rank">47</td><td class="sid">6727<span style="color:#6e6e73;margin-left:4px;font-size:11px">亞泰金屬</span></td><td class="pct">50.90%</td><td class="chg" style="color:#e24b4a">-2.39%</td></tr>
+<tr><td class="rank">48</td><td class="sid">7530</td><td class="pct">61.65%</td><td class="chg" style="color:#e24b4a">-2.38%</td></tr>
+<tr><td class="rank">49</td><td class="sid">3265<span style="color:#6e6e73;margin-left:4px;font-size:11px">台星科</span></td><td class="pct">66.48%</td><td class="chg" style="color:#e24b4a">-2.36%</td></tr>
+<tr><td class="rank">50</td><td class="sid">5291<span style="color:#6e6e73;margin-left:4px;font-size:11px">邑昇</span></td><td class="pct">54.25%</td><td class="chg" style="color:#e24b4a">-2.33%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const gc='rgba(0,0,0,0.05)';
+const tc='rgba(0,0,0,0.38)';
+
+function hbar(id, labels, vals, bg, border){
+  new Chart(document.getElementById(id),{
+    type:'bar',
+    data:{
+      labels:labels,
+      datasets:[{
+        data:vals,
+        backgroundColor:bg,
+        borderColor:border,
+        borderWidth:1,
+        borderRadius:3,
+      }]
+    },
+    options:{
+      indexAxis:'y',
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>(ctx.raw>=0?'+':'')+ctx.raw.toFixed(2)+'%'}}
+      },
+      scales:{
+        x:{ticks:{color:tc,font:{size:10},callback:v=>v+'%'},grid:{color:gc}},
+        y:{ticks:{color:'#1d1d1f',font:{size:11,weight:'500'}},grid:{display:false}}
+      }
+    }
+  });
+}
+
+const gLabels=["3086 \u83ef\u7fa9*", "6530 \u5275\u5a01", "6109 \u4e9e\u5143", "5498 \u51f1\u5d34", "6173 \u4fe1\u660c\u96fb", "2484 \u5e0c\u83ef", "4989 \u69ae\u79d1", "3221 \u53f0\u5609\u78a9", "8358 \u91d1\u5c45", "3057 \u55ac\u9f0e", "6278 \u53f0\u8868\u79d1", "8150 \u5357\u8302", "8111 \u7acb\ufffd\ufffd", "5439 \u9ad8\u6280", "3645 \u9054\u9081", "4977 \u773e\u9054-KY", "4979 \u83ef\u661f\u5149", "3450 \u806f\u921e", "3042 \u6676\u6280", "3581 \u535a\u78ca", "8043 \u871c\u671b\u5be6", "8289 \u6cf0\u85dd", "6443 \u5143\u6676", "6127 \u4e5d\u8c6a", "4916 \u4e8b\u6b23\u79d1", "3289 \u5b9c\u7279", "1597 \u76f4\u5f97", "2481 \u5f37\u8302", "4540 \u5168\u7403\u50b3\u52d5", "4908 \u524d\u9f0e"];
+const gVals=[17.93, 12.08, 10.84, 10.72, 10.35, 10.24, 9.56, 8.56, 8.48, 7.72, 6.82, 6.45, 6.43, 6.0, 5.9, 5.86, 5.78, 5.69, 5.31, 5.25, 5.1, 4.97, 4.87, 4.67, 4.36, 4.17, 4.09, 3.92, 3.83, 3.62];
+const lLabels=["5381 \u5149\u8b5c", "8064 \u6771\u6377", "7761", "8937 \u5408\u9a0f*", "8028 \u6607\u967d\u534a\u5c0e\u9ad4", "6217 \u4e2d\u63a2\u91dd", "2489 \u745e\u8ed2", "2367 \u71ff\u83ef", "3535 \u6676\u5f69\u79d1", "5386 \u9752\u96f2", "4720 \u5fb7\u6df5", "8027 \u9226\u6607", "5271", "6672 \u9a30\u8f1d\u96fb\u5b50-KY", "6425 \u6613\u767c", "3715 \u5b9a\u7a4e\u6295\u63a7", "4906 \u6b63\u6587", "7771", "4542 \u79d1\u5da0", "6407", "6673", "3376 \u65b0\u65e5\u8208", "4949 \u6709\u6210\u7cbe\u5bc6", "6920", "7772", "2313 \u83ef\u901a", "5443 \u5747\u8c6a", "7907", "1711 \u6c38\u5149", "1815 \u5bcc\u55ac"];
+const lVals=[-42.63, -8.61, -8.35, -7.11, -6.8, -6.19, -6.15, -5.65, -5.44, -5.44, -5.32, -5.27, -5.14, -5.12, -4.84, -4.5, -4.5, -4.45, -4.37, -4.29, -4.23, -4.1, -4.01, -3.95, -3.86, -3.79, -3.72, -3.66, -3.54, -3.36];
+
+hbar('cBuy',  [...gLabels].reverse(), [...gVals].reverse(), 'rgba(29,158,117,0.75)',  '#1d9e75');
+hbar('cSell', [...lLabels].reverse(), [...lVals].reverse(), 'rgba(226,75,74,0.7)', '#e24b4a');
+</script>
+</body>
+</html>
