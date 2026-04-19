@@ -15,8 +15,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 .hdr-id{font-size:13px;color:#6e6e73;font-weight:500}
 .hdr-name{font-size:18px;font-weight:600}
 .home-btn{display:inline-flex;align-items:center;gap:4px;background:#f2f2f7;color:#1d1d1f;
-          padding:5px 12px;border-radius:8px;font-size:12px;font-weight:500;
-          text-decoration:none;border:1px solid #d2d2d7;transition:.12s;white-space:nowrap}
+           padding:5px 12px;border-radius:8px;font-size:12px;font-weight:500;
+           text-decoration:none;border:1px solid #d2d2d7;transition:.12s;white-space:nowrap}
 .home-btn:hover{background:#e5e5ea}
 .badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;
         background:#fef3cd;color:#856404;margin-left:8px;vertical-align:middle}
@@ -54,6 +54,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 .section-title.orange{border-left-color:#d85a30}
 
 /* ── grids ── */
+.grid1{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1rem}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
 
@@ -161,22 +162,37 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
 </div>
 
-<!-- ── 三層週買賣超 ── -->
+<!-- ── 三層週買賣超 + 股價 ── -->
 <div class="grid3">
   <div class="card">
-    <p class="card-title">200~400張 週買賣超</p>
-    <p class="card-sub">週持股比例變化（%）</p>
-    <div style="position:relative;height:170px"><canvas id="c3"></canvas></div>
+    <p class="card-title">200~400張 週買賣超 + 股價</p>
+    <p class="card-sub">週淨增減持張數（左軸）/ 股價（右軸）</p>
+    <div class="leg">
+      <span class="li"><span class="ld" style="background:#e24b4a"></span>買超</span>
+      <span class="li"><span class="ld" style="background:#1d9e75"></span>賣超</span>
+      <span class="li"><span class="ld" style="background:#888;border-radius:50%"></span>股價</span>
+    </div>
+    <div style="position:relative;height:200px"><canvas id="c3"></canvas></div>
   </div>
   <div class="card">
-    <p class="card-title">400~1000張 週買賣超</p>
-    <p class="card-sub">週持股比例變化（%）</p>
-    <div style="position:relative;height:170px"><canvas id="c4"></canvas></div>
+    <p class="card-title">400~1000張 週買賣超 + 股價</p>
+    <p class="card-sub">週淨增減持張數（左軸）/ 股價（右軸）</p>
+    <div class="leg">
+      <span class="li"><span class="ld" style="background:#e24b4a"></span>買超</span>
+      <span class="li"><span class="ld" style="background:#1d9e75"></span>賣超</span>
+      <span class="li"><span class="ld" style="background:#888;border-radius:50%"></span>股價</span>
+    </div>
+    <div style="position:relative;height:200px"><canvas id="c4"></canvas></div>
   </div>
   <div class="card">
-    <p class="card-title">1000張以上 週買賣超</p>
-    <p class="card-sub">週持股比例變化（%）</p>
-    <div style="position:relative;height:170px"><canvas id="c5"></canvas></div>
+    <p class="card-title">1000張以上 週買賣超 + 股價</p>
+    <p class="card-sub">週淨增減持張數（左軸）/ 股價（右軸）</p>
+    <div class="leg">
+      <span class="li"><span class="ld" style="background:#e24b4a"></span>買超</span>
+      <span class="li"><span class="ld" style="background:#1d9e75"></span>賣超</span>
+      <span class="li"><span class="ld" style="background:#888;border-radius:50%"></span>股價</span>
+    </div>
+    <div style="position:relative;height:200px"><canvas id="c5"></canvas></div>
   </div>
 </div>
 
@@ -268,9 +284,20 @@ const tc = 'rgba(0,0,0,0.38)';
 
 const baseOpts = {
   responsive: true, maintainAspectRatio: false,
-  animation: { duration: 200 },
+  animation: { duration: 400, easing: 'easeOutQuart' },
   plugins: { legend: { display: false },
-             tooltip: { mode: 'index', intersect: false } },
+             tooltip: {
+               mode: 'index', intersect: false,
+               backgroundColor: 'rgba(255,255,255,0.97)',
+               titleColor: '#1d1d1f',
+               bodyColor: '#6e6e73',
+               borderColor: '#e5e5ea',
+               borderWidth: 1,
+               padding: 10,
+               boxPadding: 4,
+               titleFont: { size: 11, weight: '600' },
+               bodyFont: { size: 11 },
+             } },
   scales: {
     x: { ticks: { color: tc, font: { size: 10 }, maxRotation: 45,
                     autoSkip: true, maxTicksLimit: 10 },
@@ -320,6 +347,34 @@ function setTdccT(t) {
   renderTdccSection();
 }
 
+// ── countUp 動畫 ───────────────────────────────────────────────
+function countUp(el, targetText) {
+  const m = targetText.match(/^([-+]?)([\d,]+\.?\d*)(.*)/);
+
+  if (!m) return;
+  const prefix = m[1];
+  const num = parseFloat(m[2].replace(/,/g, ''));
+  const suffix = m[3];
+  const isFloat = targetText.includes('.');
+  const decLen = isFloat ? ((targetText.match(/\.(\d+)/) || ['', '0'])[1].length) : 0;
+  const useLoc = m[2].includes(',');
+  let start = null;
+  const dur = 700;
+  function fmt(v) {
+    if (isFloat) return prefix + v.toFixed(decLen) + suffix;
+    return prefix + (useLoc ? Math.round(v).toLocaleString() : Math.round(v)) + suffix;
+  }
+  function step(ts) {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = fmt(num * ease);
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = targetText;
+  }
+  requestAnimationFrame(step);
+}
+
 // ── KPI cards ─────────────────────────────────────────────────
 function renderKPI() {
   const td  = D.thresholds[String(insiderT)];
@@ -351,11 +406,13 @@ function renderKPI() {
        c: D.has_inst ? '累計張數' : '無資料', pos: instLast !== null && instLast >= 0 },
   ];
   items.forEach(m => {
-    mcEl.innerHTML += `<div class="mc">
-      <p class="mc-label">${m.l}</p>
+    const div = document.createElement('div');
+    div.className = 'mc';
+    div.innerHTML = `<p class="mc-label">${m.l}</p>
       <p class="mc-val">${m.v}</p>
-      <p class="mc-ch ${m.pos?'pos':'neg'}">${m.c}</p>
-    </div>`;
+      <p class="mc-ch ${m.pos?'pos':'neg'}">${m.c}</p>`;
+    mcEl.appendChild(div);
+    countUp(div.querySelector('.mc-val'), m.v);
   });
 }
 
@@ -466,29 +523,39 @@ function renderMain() {
     },
   });
 
-  // c3 c4 c5 三層週買賣超（用 group_data 的 net_lots）
+  // c3 c4 c5 三層週買賣超 + 股價（雙Y軸）
   ['c3','c4','c5'].forEach((id, i) => {
     const g = D.group_data[i];
     if (!g) return;
-    const ws = slice(g.net_lots);
+    const ws     = slice(g.net_lots);
+    const prices = slice(D.prices);
     cou(id, {
       type: 'bar',
       data: {
         labels: labs,
-        datasets: [{
-          data: ws,
-          backgroundColor: barCols(ws, 'rgba(226,75,74,0.6)', 'rgba(29,158,117,0.65)'),
-          borderColor:     barCols(ws, '#e24b4a', '#1d9e75'),
-          borderWidth: 1,
-        }],
+        datasets: [
+          {
+            type: 'bar', label: '週買賣超(張)', data: ws, yAxisID: 'y',
+            backgroundColor: barCols(ws, 'rgba(226,75,74,0.6)', 'rgba(29,158,117,0.65)'),
+            borderColor:     barCols(ws, '#e24b4a', '#1d9e75'),
+            borderWidth: 1,
+          },
+          {
+            type: 'line', label: '股價', data: prices, yAxisID: 'y1',
+            borderColor: 'rgba(90,90,90,0.72)', backgroundColor: 'transparent',
+            tension: 0.3, pointRadius: 1.5, borderWidth: 1.8,
+            pointBackgroundColor: 'rgba(90,90,90,0.72)',
+          },
+        ],
       },
       options: {
         ...baseOpts,
         scales: {
           x: baseOpts.scales.x,
-          y: { grid: { color: gc },
-                ticks: { color: tc, font: { size: 10 },
-                          callback: v => v.toLocaleString() } },
+          y:  { position: 'left',  grid: { color: gc },
+                 ticks: { color: tc, font: { size: 10 }, callback: v => v.toLocaleString() } },
+          y1: { position: 'right', grid: { drawOnChartArea: false },
+                 ticks: { color: tc, font: { size: 10 }, callback: v => v.toLocaleString() } },
         },
       },
     });
