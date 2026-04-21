@@ -1,0 +1,7 @@
+﻿################################################################################
+# 這個 .gitignore 檔案由 Microsoft(R) Visual Studio 自動建立。
+################################################################################
+
+/.vs/slnx.sqlite
+/.vs/plot_stock/FileContentIndex/2ac5c0fa-bf66-47c2-aae5-cd220f6b2b4d.vsidx
+/.vs/plot_stock/FileContentIndex
