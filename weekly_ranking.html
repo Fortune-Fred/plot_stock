@@ -138,63 +138,6 @@ th.sort-desc::after{content:'▼';opacity:1}
   <button class="tab" onclick="setFilter('1000',this)" id="btn1000">1000張以上</button>
 </div>
 
-<!-- 籌碼訊號 & 市場篩選 -->
-<div class="chips-section">
-  <div class="chips-row">
-    <span class="filter-label">核心訊號：</span>
-    <button class="chip chip-ct"       onclick="toggleSignal('逆買',this)">逆買</button>
-    <button class="chip chip-accel"    onclick="toggleSignal('加速',this)">加速買超</button>
-    <button class="chip chip-reversal" onclick="toggleSignal('籌碼回補',this)">籌碼回補</button>
-    <button class="chip chip-hiconc"   onclick="toggleSignal('高度集中',this)">高度集中</button>
-    <button class="chip chip-silent"   onclick="toggleSignal('久盤吸籌',this)">久盤吸籌</button>
-    <button class="chip chip-new"      onclick="toggleSignal('新進榜',this)">新進榜</button>
-    <div class="chips-divider"></div>
-    <span class="filter-label">連增：</span>
-    <button class="chip" onclick="toggleSignal('連增3',this)">≥3週</button>
-    <button class="chip" onclick="toggleSignal('連增5',this)">≥5週</button>
-  </div>
-  <div class="chips-row">
-    <span class="filter-label">擴充訊號：</span>
-    <button class="chip chip-diverg"   onclick="toggleSignal('量價背離',this)">量價背離</button>
-    <button class="chip chip-instit"   onclick="toggleSignal('法人同向',this)">法人同向</button>
-    <button class="chip chip-resonate" onclick="toggleSignal('內外共振',this)">內外共振</button>
-    <button class="chip chip-event"    onclick="toggleSignal('事件驅動',this)">事件驅動</button>
-    <button class="chip chip-hivol"    onclick="toggleSignal('高波動警示',this)">高波動警示</button>
-    <button class="chip chip-liqrisk"  onclick="toggleSignal('流動性風險',this)">流動性風險</button>
-  </div>
-  <div class="chips-row">
-    <span class="filter-label">市場：</span>
-    <button class="chip chip-tse chip-mkt" onclick="toggleMarket('上市',this)">上市</button>
-    <button class="chip chip-otc chip-mkt" onclick="toggleMarket('上櫃',this)">上櫃</button>
-  </div>
-</div>
-
-<!-- 標籤說明（可展開）-->
-<details class="legend-section">
-  <summary>標籤說明（點擊展開）</summary>
-  <div class="legend-body">
-    <p class="legend-intro">
-      每列只顯示「<b>主標籤 +N</b>」格式：主標籤為優先度最高的訊號，
-      <b>+N</b> 表示還有 N 個其他訊號。將滑鼠懸停在標籤或 +N 上可見全部名稱。<br>
-      優先順序：逆買 &gt; 事件驅動 &gt; 加速 &gt; 量價背離 &gt; 內外共振 &gt; 法人同向 &gt; 籌碼回補 &gt; 高波動警示 &gt; 高度集中 &gt; 久盤吸籌 &gt; 流動性風險 &gt; 新進榜
-    </p>
-    <div class="legend-grid">
-      <div class="legend-item"><span class="ct-buy">逆買</span><span class="legend-desc">股價跌幅≥3%，大戶仍買超，籌碼逆勢進場</span></div>
-      <div class="legend-item"><span class="badge-event">事件驅動</span><span class="legend-desc">單週WoW≥3%且無連增背景，疑似事件性異常買進</span></div>
-      <div class="legend-item"><span class="badge-accel">加速</span><span class="legend-desc">本週WoW≥上週×1.5倍，買超力道加速</span></div>
-      <div class="legend-item"><span class="badge-diverg">量價背離</span><span class="legend-desc">籌碼方向與股價方向相反，留意潛在轉折</span></div>
-      <div class="legend-item"><span class="badge-resonate">內外共振</span><span class="legend-desc">連增≥3週且股價同步上漲≥2%，多頭共振</span></div>
-      <div class="legend-item"><span class="badge-instit">法人同向</span><span class="legend-desc">大戶佔比≥70%且持續增持，大資金動向一致</span></div>
-      <div class="legend-item"><span class="badge-reversal">籌碼回補</span><span class="legend-desc">上週賣超後本週轉正，籌碼方向翻轉</span></div>
-      <div class="legend-item"><span class="badge-hivol">高波動警示</span><span class="legend-desc">週漲跌幅≥8%，短期波動劇烈，注意風險</span></div>
-      <div class="legend-item"><span class="badge-hiconc">高度集中</span><span class="legend-desc">大戶持股佔比超過75%，籌碼高度集中</span></div>
-      <div class="legend-item"><span class="badge-silent">久盤吸籌</span><span class="legend-desc">連增≥5週但股價漲幅<3%，低調持續累積</span></div>
-      <div class="legend-item"><span class="badge-liqrisk">流動性風險</span><span class="legend-desc">大戶佔比超過90%，市場流通籌碼稀少</span></div>
-      <div class="legend-item"><span class="badge-new">新進榜</span><span class="legend-desc">本週首次進入增持前100名</span></div>
-    </div>
-  </div>
-</details>
-
 <div id="first-week-notice" style="display:none;background:#fffbe6;border:1px solid #ffe58f;border-radius:8px;padding:8px 14px;font-size:12px;color:#856404;margin-bottom:1.25rem">
   ⚠️ 此門檻為首次啟用，缺少上週比較基準，目前顯示<b>本週持股比例排行</b>。下週起將正確顯示增減變化。
 </div>
@@ -233,6 +176,63 @@ th.sort-desc::after{content:'▼';opacity:1}
     <p class="card-title" id="chart-sell-title">大戶減少最多 TOP 30</p>
     <p class="card-sub">週持股比例變化（百分點）</p>
     <div style="position:relative;height:660px"><canvas id="cSell"></canvas></div>
+  </div>
+</div>
+
+<!-- 標籤說明（可展開）-->
+<details class="legend-section">
+  <summary>標籤說明（點擊展開）</summary>
+  <div class="legend-body">
+    <p class="legend-intro">
+      每列只顯示「<b>主標籤 +N</b>」格式：主標籤為優先度最高的訊號，
+      <b>+N</b> 表示還有 N 個其他訊號。將滑鼠懸停在標籤或 +N 上可見全部名稱。<br>
+      優先順序：逆買 &gt; 事件驅動 &gt; 加速 &gt; 量價背離 &gt; 內外共振 &gt; 法人同向 &gt; 籌碼回補 &gt; 高波動警示 &gt; 高度集中 &gt; 久盤吸籌 &gt; 流動性風險 &gt; 新進榜
+    </p>
+    <div class="legend-grid">
+      <div class="legend-item"><span class="ct-buy">逆買</span><span class="legend-desc">股價跌幅≥3%，大戶仍買超，籌碼逆勢進場</span></div>
+      <div class="legend-item"><span class="badge-event">事件驅動</span><span class="legend-desc">單週WoW≥3%且無連增背景，疑似事件性異常買進</span></div>
+      <div class="legend-item"><span class="badge-accel">加速</span><span class="legend-desc">本週WoW≥上週×1.5倍，買超力道加速</span></div>
+      <div class="legend-item"><span class="badge-diverg">量價背離</span><span class="legend-desc">籌碼方向與股價方向相反，留意潛在轉折</span></div>
+      <div class="legend-item"><span class="badge-resonate">內外共振</span><span class="legend-desc">連增≥3週且股價同步上漲≥2%，多頭共振</span></div>
+      <div class="legend-item"><span class="badge-instit">法人同向</span><span class="legend-desc">大戶佔比≥70%且持續增持，大資金動向一致</span></div>
+      <div class="legend-item"><span class="badge-reversal">籌碼回補</span><span class="legend-desc">上週賣超後本週轉正，籌碼方向翻轉</span></div>
+      <div class="legend-item"><span class="badge-hivol">高波動警示</span><span class="legend-desc">週漲跌幅≥8%，短期波動劇烈，注意風險</span></div>
+      <div class="legend-item"><span class="badge-hiconc">高度集中</span><span class="legend-desc">大戶持股佔比超過75%，籌碼高度集中</span></div>
+      <div class="legend-item"><span class="badge-silent">久盤吸籌</span><span class="legend-desc">連增≥5週但股價漲幅<3%，低調持續累積</span></div>
+      <div class="legend-item"><span class="badge-liqrisk">流動性風險</span><span class="legend-desc">大戶佔比超過90%，市場流通籌碼稀少</span></div>
+      <div class="legend-item"><span class="badge-new">新進榜</span><span class="legend-desc">本週首次進入增持前100名</span></div>
+    </div>
+  </div>
+</details>
+
+<!-- 籌碼訊號 & 市場篩選 -->
+<div class="chips-section">
+  <div class="chips-row">
+    <span class="filter-label">核心訊號：</span>
+    <button class="chip chip-ct"       onclick="toggleSignal('逆買',this)">逆買</button>
+    <button class="chip chip-accel"    onclick="toggleSignal('加速',this)">加速買超</button>
+    <button class="chip chip-reversal" onclick="toggleSignal('籌碼回補',this)">籌碼回補</button>
+    <button class="chip chip-hiconc"   onclick="toggleSignal('高度集中',this)">高度集中</button>
+    <button class="chip chip-silent"   onclick="toggleSignal('久盤吸籌',this)">久盤吸籌</button>
+    <button class="chip chip-new"      onclick="toggleSignal('新進榜',this)">新進榜</button>
+    <div class="chips-divider"></div>
+    <span class="filter-label">連增：</span>
+    <button class="chip" onclick="toggleSignal('連增3',this)">≥3週</button>
+    <button class="chip" onclick="toggleSignal('連增5',this)">≥5週</button>
+  </div>
+  <div class="chips-row">
+    <span class="filter-label">擴充訊號：</span>
+    <button class="chip chip-diverg"   onclick="toggleSignal('量價背離',this)">量價背離</button>
+    <button class="chip chip-instit"   onclick="toggleSignal('法人同向',this)">法人同向</button>
+    <button class="chip chip-resonate" onclick="toggleSignal('內外共振',this)">內外共振</button>
+    <button class="chip chip-event"    onclick="toggleSignal('事件驅動',this)">事件驅動</button>
+    <button class="chip chip-hivol"    onclick="toggleSignal('高波動警示',this)">高波動警示</button>
+    <button class="chip chip-liqrisk"  onclick="toggleSignal('流動性風險',this)">流動性風險</button>
+  </div>
+  <div class="chips-row">
+    <span class="filter-label">市場：</span>
+    <button class="chip chip-tse chip-mkt" onclick="toggleMarket('上市',this)">上市</button>
+    <button class="chip chip-otc chip-mkt" onclick="toggleMarket('上櫃',this)">上櫃</button>
   </div>
 </div>
 
